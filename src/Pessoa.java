@@ -4,5 +4,5 @@ public class Pessoa {
     String nome;
     LocalDate nascimento;
 
-    
+
 }
