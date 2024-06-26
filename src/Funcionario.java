@@ -14,6 +14,22 @@ public class Funcionario extends Pessoa {
         this.funcao = funcao;
     }
 
+    public BigDecimal getSalario() {
+        return salario;
+    }
+
+    public void setSalario(BigDecimal salario) {
+        this.salario = salario;
+    }
+
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
+
     // Também foi utilizado o Chat GPT para criar a formatação, e a captura de erro
     private BigDecimal parseSalario(String salario) {
         // Analisado a planilha e visto que o salário sempre está com duas casas e com o ponto final como separador de casas por isso foi realizado dessa forma
@@ -26,7 +42,10 @@ public class Funcionario extends Pessoa {
             throw new IllegalArgumentException("Salário no formato inválido. Use ponto como separador decimal.");
         }
     }
-
-    // Getters e setters podem ser adicionados aqui
+    // Método para aplicar um bônus de 10% no salário
+    public void aplicarBonus() {
+        BigDecimal aumento = this.salario.multiply(new BigDecimal("0.10"));
+        this.salario = this.salario.add(aumento);
+    }
 }
 
