@@ -1,9 +1,8 @@
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,36 +23,44 @@ public class Main {
             // 3.2
             funcionarios.removeIf(f -> f.getNome().equals("João"));
             // 3.3
-            imprimirFuncionarios(funcionarios);
-
+            System.out.println("Lista de Funcionários");
+            Funcionario.imprimirFuncionarios(funcionarios);
             // 3.4
             funcionarios.forEach(Funcionario::aplicarBonus);
+            // 3.5
+            Map<String, List<Funcionario>> funcionariosPorFuncao = Funcionario.agruparPorFuncao(funcionarios);
+            // 3.6
+            System.out.println("-------------\nOrganizando por Funções\n");
+            Funcionario.imprimirFuncionariosAgrupados(funcionariosPorFuncao);
+            // 3.8 (não existe 3.7?)
+            System.out.println("-------------\n");
+            System.out.println("Funcionários que fazem aniversário em outubro e dezembro:");
+            Funcionario.imprimirFuncionariosAniversarioMes(funcionarios, Month.OCTOBER, Month.DECEMBER);
+
+            // 3.9
+            System.out.println("\n-------------\n");
+            Funcionario.imprimirFuncionarioMaisVelho(funcionarios);
+
+            // 3.10
+            System.out.println("\n-------------\n");
+            System.out.println("Funcionários em ordem alfabética:");
+            Funcionario.imprimirFuncionariosOrdemAlfabetica(funcionarios);
+
+            // 3.11
+            System.out.println("\n-------------\n");
+            DecimalFormat salarioFormatter = Funcionario.getSalarioFormato();
+            System.out.println("Soma dos Salários formatada: " + salarioFormatter.format(Funcionario.calcularSomaSalarios(funcionarios)));
 
 
+            // 3.12
+            System.out.println("\n-------------\n");
+            System.out.println("Funcionários e quantidade de salários mínimos:");
+            for (Funcionario funcionario : funcionarios) {
+                funcionario.imprimirNomeESalarioMinimo();
+            }
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-        }
-    }
-
-    // Com auxílio do Chat GPT foi criado a formatação necessária para exibir os dados
-    public static void imprimirFuncionarios(List<Funcionario> funcionarios) {
-        // Configurar formatters para data e salário
-        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
-        symbols.setDecimalSeparator(',');
-        symbols.setGroupingSeparator('.');
-        DecimalFormat salarioFormatter = new DecimalFormat("#,##0.00", symbols);
-
-        // Exibir informações formatadas dos funcionários
-        for (Funcionario f : funcionarios) {
-            String dataNascimentoFormatada = f.getNascimento().format(Pessoa.dateFormatter);
-            String salarioFormatado = salarioFormatter.format(f.getSalario());
-
-            System.out.println("Nome: " + f.getNome());
-            System.out.println("Nascimento: " + dataNascimentoFormatada);
-            System.out.println("Salário: " + salarioFormatado);
-            System.out.println("Função: " + f.getFuncao());
-            System.out.println();
         }
     }
 }
