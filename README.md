@@ -9,7 +9,6 @@ Este é um projeto para explicar a resolução do teste prático.
 - [Instalação](#instalação)
 - [Sobre o Teste Prático](#teste)
 - [Resolução](#resolução)
-- [Licença](#licença)
 - [Autor](#autor)
 
 ## Instalação
