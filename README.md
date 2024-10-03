@@ -64,6 +64,7 @@ Orientações gerais:<br>
 IMPORTANTE:<br>
 • No 3.6 ao imprimir os funcionários agrupados por função tomei a liberdade de organizar a lista para imprimiir de forma alfabetica de acordo com a função, pois no exercicio não menciona nada a respeito.
 • Também após imprimir na primeira vez todos os dados ao fazer as próximas impressões na tela resolvi colocar apenas os nomes ou argumentos que sejam relevante para evitar imprimir todos os dados novamente.
+• Este teste está privado
 
 
 ## Autor
